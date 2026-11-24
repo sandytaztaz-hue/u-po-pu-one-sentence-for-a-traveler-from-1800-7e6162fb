@@ -1,8 +1,8 @@
-import os
+from pathlib import Path
 
-# One image only: a library whose books argue endlessly.
-LINE = "It is a library where every book argues with every other book, day and night, and the argument never ends."
+TEXT = "It is a spider's web spun across the whole world, and a tug on one thread in London is felt 3,000 miles away in Boston in the time it takes to blink."
 
-os.makedirs("/output", exist_ok=True)
-with open("/output/entry.txt", "w", encoding="utf-8") as f:
-    f.write(LINE)
+dest = Path("/output/entry.txt")
+dest.parent.mkdir(parents=True, exist_ok=True)
+dest.write_text(TEXT, encoding="utf-8")
+print("chars:", len(TEXT))
